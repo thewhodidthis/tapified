@@ -1,0 +1,50 @@
+{
+  "name": "tapeless",
+  "version": "0.0.0",
+  "description": "Helps with tape like testing",
+  "main": "index",
+  "module": "index.mjs",
+  "browser": {
+    "index.js": "browser/index.js",
+    "index.mjs": "browser/index.mjs"
+  },
+  "homepage": "https://github.com/thewhodidthis/tapeless#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thewhodidthis/tapeless.git"
+  },
+  "bugs": {
+    "url": "https://github.com/thewhodidthis/tapeless/issues"
+  },
+  "scripts": {
+    "pretest": "eslint test.js",
+    "test": "node test",
+    "prestart": "eslint . --ext mjs",
+    "start": "rollup index.mjs -f cjs -e tapeling,assert --no-interop > index.js",
+    "poststart": "cd browser; rollup index.mjs -f cjs -e tapeling,likewise --no-interop > index.js"
+  },
+  "eslintConfig": {
+    "extends": "@thewhodidthis"
+  },
+  "engines": {
+    "node": ">=6.4.0",
+    "npm": ">=3.10.3"
+  },
+  "dependencies": {
+    "likewise": "latest",
+    "tapeling": "latest"
+  },
+  "devDependencies": {
+    "@thewhodidthis/eslint-config": "latest",
+    "eslint": "latest",
+    "rollup": "latest"
+  },
+  "keywords": [
+    "tap",
+    "tape",
+    "test",
+    "tool"
+  ],
+  "author": "sChzs BkgNns <sotirios.bakagiannis@gmail.com> (https://www.thewhodidthis.com)",
+  "license": "Unlicense"
+}
