@@ -1,15 +1,7 @@
-import { tape, bill, stat } from 'tapeling'
+import { tape, bill } from 'tapeling'
 import assert from 'assert'
 
-process.on('exit', (code) => {
-  const { flops } = stat()
-
-  bill(code)
-
-  if (!code && flops) {
-    process.exit(flops)
-  }
-})
+process.on('exit', bill)
 
 const tap = tape(assert)
 
