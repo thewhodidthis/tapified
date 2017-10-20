@@ -21,7 +21,9 @@
     "test": "node test",
     "prestart": "eslint . --ext mjs",
     "start": "rollup index.mjs -f cjs -e tapeling,assert --no-interop > index.js",
-    "poststart": "cd browser; rollup index.mjs -f cjs -e tapeling,likewise --no-interop > index.js"
+    "poststart": "cd browser; rollup index.mjs -f cjs -e tapeling,likewise --no-interop > index.js",
+    "preexample": "eslint example/*",
+    "example": "node example"
   },
   "eslintConfig": {
     "extends": "@thewhodidthis"
