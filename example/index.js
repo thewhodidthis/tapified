@@ -12,4 +12,4 @@ const nested = () => {
   }, /expected/, 'supports assert.throws')
 }
 
-assert.doesNotThrow(nested, 'nested asserts are weird')
+assert.doesNotThrow(nested, Error, 'nested asserts come first')
