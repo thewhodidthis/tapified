@@ -2,14 +2,16 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var assert = require('likewise');
 var tapeling = require('tapeling');
+var likewise = require('likewise');
 
-const tap = tapeling.tape(assert);
+const tap = tapeling.tape(likewise.assert, 2);
 
-for (const fn in assert) {
-  tap[fn] = tapeling.tape(assert[fn]);
+for (const fn in likewise.assert) {
+  const t = likewise.assert[fn];
+
+  tap[fn] = tapeling.tape(t, t.length + 1);
 }
 
-exports.assert = tap;
 exports.report = tapeling.bill;
+exports.assert = tap;
