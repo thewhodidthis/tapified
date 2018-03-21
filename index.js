@@ -1,7 +1,7 @@
 'use strict';
 
-var tapeling = require('tapeling');
-var assert = require('assert');
+const tapeling = require('tapeling');
+const assert = require('assert');
 
 process.on('exit', tapeling.bill);
 
