@@ -5,8 +5,8 @@
   "main": "index",
   "module": "index.mjs",
   "browser": {
-    "index.js": "browser/index.js",
-    "index.mjs": "browser/index.mjs"
+    "./index.js": "./browser/index.js",
+    "./index.mjs": "./browser/index.mjs"
   },
   "homepage": "https://github.com/thewhodidthis/tapeless#readme",
   "repository": {
@@ -20,8 +20,8 @@
     "pretest": "eslint test.js",
     "test": "node test",
     "prestart": "eslint . --ext mjs",
-    "start": "rollup index.mjs -f cjs -e tapeling,assert --no-interop > index.js",
-    "poststart": "cd browser; rollup index.mjs -f cjs -e tapeling,likewise --no-interop > index.js",
+    "start": "rollup index.mjs -c node:x -f cjs -e tapeling,assert --no-interop --environment PREFER_CONST > index.js",
+    "poststart": "cd browser; rollup index.mjs -c node:x -f cjs -e tapeling,likewise --no-interop --environment PREFER_CONST > index.js",
     "preexample": "eslint example/*",
     "example": "node example"
   },
@@ -29,8 +29,8 @@
     "extends": "@thewhodidthis"
   },
   "engines": {
-    "node": ">=6.4.0",
-    "npm": ">=3.10.3"
+    "node": ">=6.11.0",
+    "npm": ">=3.10.10"
   },
   "dependencies": {
     "likewise": "latest",
@@ -39,7 +39,8 @@
   "devDependencies": {
     "@thewhodidthis/eslint-config": "latest",
     "eslint": "latest",
-    "rollup": "latest"
+    "rollup": "latest",
+    "rollup-config-x": "latest"
   },
   "keywords": [
     "tap",
