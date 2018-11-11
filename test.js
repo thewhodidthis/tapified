@@ -6,60 +6,83 @@ const { execPath } = process
 
 const assert = require('./')
 
-const assertHeader = (stdout, extra) => {
-  assert(stdout.startsWith('TAP version 13'), 'TAP version header comes on top', extra)
-}
+assert
+  .describe('assert exists')
+  .test(assert)
+  .describe('assert.equal exists')
+  .test(assert.equal)
+  .test('truthy, not a description')
 
-assert(assert, 'assert exists')
-assert(assert.equal, 'assert.equal exists')
+assert.equal
+  .test('skip description', 'skip description')
+  .describe('assert.strictEqual is a function')
+  .test(typeof assert.strictEqual.test, 'function')
 
-assert('truthy, not a description')
-
-assert.equal('skip description', 'skip description')
-assert.equal(typeof assert.strictEqual, 'function', 'assert.strictEqual is a function')
-
-assert.doesNotThrow(() => {
-  assert.throws(() => {
-    throw Error('expected!')
-  }, /expected/, 'supports assert.throws')
-}, Error, 'are nested asserts really that weird?')
+assert.doesNotThrow
+  .describe('are nested asserts really that weird?')
+  .test(() => {
+    assert.throws
+      .describe('support assert.throws')
+      .test(() => {
+        throw Error('expected!')
+      }, /expected/)
+  }, Error)
 
 const ego = require.resolve('./')
 
 execFile(execPath, [ego], (error, stdout, stderr) => {
-  assertHeader(stdout, 'no assertions')
+  assert
+    .describe('TAP version header comes on top')
+    .test(stdout.startsWith('TAP version 13'))
+    .test(stdout.includes('# tests 0'))
 
-  assert.equal(stderr, '', 'does not write to stderr')
-
-  assert.equal(stdout.includes('Bail out!'), false, 'does not exit prematurely')
-  assert.equal(error, null, 'unlike tapsert no assertions ran is no failure')
-  assert(stdout.includes('# tests 0'), 'includes bill')
+  assert.equal
+    .describe('does not write to stderr')
+    .test(stderr, '')
+    .describe('does not exit prematurely')
+    .test(stdout.includes('Bail out!'), false)
+    .describe('unlike tapsert no assertions ran is no failure', 'no assertions')
+    .test(error, null)
 })
 
 const bad = require.resolve('./example/bail.js')
 
 execFile(execPath, [bad], (error, stdout, stderr) => {
-  assertHeader(stdout, 'example bails (bad)')
+  assert.notEqual
+    .describe('does not clear stderr')
+    .test(stderr, '')
 
-  assert.notEqual(stderr, '', 'does not clear stderr')
+  assert
+    .describe('TAP version header comes on top')
+    .test(stdout.startsWith('TAP version 13'))
+    .describe('does exit prematurely')
+    .test(stdout.includes('Bail out!'))
+    .describe('does exit with a non-zero error code')
+    .test(error)
 
-  assert(stdout.includes('Bail out!'), 'does exit prematurely')
-  assert(error, 'does exit with a non-zero error code')
-
-  assert.equal(stdout.includes('# tests 0'), false, 'excludes bill')
+  assert.equal
+    .describe('excludes bill', 'example bails (bad)')
+    .test(stdout.includes('# tests 0'), false)
 })
 
 const tip = require.resolve('./example')
 
 execFile(execPath, [tip], (error, stdout, stderr) => {
-  assertHeader(stdout, 'example fails')
+  assert.equal
+    .describe('does not write to stderr')
+    .test(stderr, '')
 
-  assert.equal(stderr, '', 'does not write to stderr')
+  assert
+    .describe('has TAP plan')
+    .test(stdout.includes('1..6'))
+    .describe('has 6 tests total')
+    .test(stdout.includes('# tests 6'))
+    .describe('has 5 passing tests')
+    .test(stdout.includes('# pass  5'))
+    .describe('has 1 failing test')
+    .test(stdout.includes('# fail  1'))
 
-  assert(stdout.includes('1..6'), 'has TAP plan')
-  assert(stdout.includes('# tests 6'), 'has 6 tests total')
-  assert(stdout.includes('# pass  5'), 'has 5 passing tests')
-  assert(stdout.includes('# fail  1'), 'has 1 failing test')
-
-  assert.equal(error, null, 'unlike tapsert mess not with exit code on failure')
+  assert.equal
+    .describe('unlike tapsert mess not with exit code on failure', 'example fails')
+    .test(error, null)
 })
