@@ -1,15 +1,23 @@
 const assert = require('../')
 
-assert(assert, 'assert exists')
-assert(assert.equal, 'assert.equal exists')
-assert.equal(typeof assert.strictEqual, 'function', 'assert.strictEqual is a function')
+assert
+  .describe('assert exists')
+  .test(assert)
+  .describe('assert.equal exists')
+  .test(assert.equal)
 
-assert.ok(false, 'really want false to be true')
+assert.equal.describe('assert.strictEqual is a function').test(typeof assert.strictEqual.test, 'function')
 
-const nested = () => {
-  assert.throws(() => {
+assert.ok
+  .describe('really want false to be true')
+  .test(false)
+
+const nested = () => assert.throws
+  .describe('support assert.throws')
+  .test(() => {
     throw Error('expected!')
-  }, /expected/, 'supports assert.throws')
-}
+  }, /expected/)
 
-assert.doesNotThrow(nested, Error, 'nested asserts come first')
+assert.doesNotThrow
+  .describe('nested asserts come last, so this gets ignored')
+  .test(nested, Error)
