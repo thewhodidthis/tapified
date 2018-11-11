@@ -1,12 +1,12 @@
-import { tape, bill } from 'tapeling'
+import { tape, exit } from 'tapeling'
 import assert from 'assert'
-
-process.on('exit', bill)
 
 const tap = tape(assert)
 
 for (const fn in assert) {
   tap[fn] = tape(assert[fn])
 }
+
+process.on('exit', exit)
 
 export default tap

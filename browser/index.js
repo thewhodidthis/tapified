@@ -5,13 +5,11 @@ Object.defineProperty(exports, '__esModule', { value: true });
 const tapeling = require('tapeling');
 const likewise = require('likewise');
 
-const tap = tapeling.tape(likewise.assert, 2);
+const tap = tapeling.tape(likewise.assert);
 
 for (const fn in likewise.assert) {
-  const t = likewise.assert[fn];
-
-  tap[fn] = tapeling.tape(t, t.length + 1);
+  tap[fn] = tapeling.tape(likewise.assert[fn]);
 }
 
-exports.report = tapeling.bill;
+exports.report = tapeling.exit;
 exports.assert = tap;

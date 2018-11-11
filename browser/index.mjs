@@ -1,12 +1,10 @@
-import { tape, bill } from 'tapeling'
+import { tape, exit } from 'tapeling'
 import { assert } from 'likewise'
 
-const tap = tape(assert, 2)
+const tap = tape(assert)
 
 for (const fn in assert) {
-  const t = assert[fn]
-
-  tap[fn] = tape(t, t.length + 1)
+  tap[fn] = tape(assert[fn])
 }
 
-export { bill as report, tap as assert }
+export { exit as report, tap as assert }
