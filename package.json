@@ -20,8 +20,7 @@
     "pretest": "eslint test.js",
     "test": "node test",
     "prestart": "eslint . --ext mjs",
-    "start": "rollup index.mjs -c node:x -f cjs -e tapeling,assert --no-interop --environment PREFER_CONST > index.js",
-    "poststart": "cd browser; rollup index.mjs -c node:x -f cjs -e tapeling,likewise --no-interop --environment PREFER_CONST > index.js",
+    "start": "rollup -c",
     "preexample": "eslint example/*",
     "example": "node example"
   },
@@ -39,8 +38,7 @@
   "devDependencies": {
     "@thewhodidthis/eslint-config": "latest",
     "eslint": "latest",
-    "rollup": "latest",
-    "rollup-config-x": "latest"
+    "rollup": "latest"
   },
   "keywords": [
     "tap",
