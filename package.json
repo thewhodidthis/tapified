@@ -32,13 +32,13 @@
     "npm": ">=3.10.10"
   },
   "dependencies": {
-    "likewise": "^1.0.1",
-    "tapeling": "^1.0.4"
+    "likewise": "^1.0.3",
+    "tapeling": "^1.0.6"
   },
   "devDependencies": {
-    "@thewhodidthis/eslint-config": "latest",
+    "@thewhodidthis/eslint-config": "^0.0.11",
     "eslint": "^6.8.0",
-    "rollup": "^1.29.1"
+    "rollup": "^1.31.0"
   },
   "keywords": [
     "tap",
