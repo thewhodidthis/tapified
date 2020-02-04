@@ -1,6 +1,6 @@
 {
   "name": "tapeless",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Helps with tape like testing",
   "main": "index",
   "module": "index.mjs",
