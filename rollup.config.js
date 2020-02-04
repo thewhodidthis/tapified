@@ -1,7 +1,29 @@
-const output = { file: 'index.js', format: 'cjs', interop: false }
+// Skip bundling these imports
 const external = ['tapeling', 'assert', 'likewise']
 
-const main = { output, input: 'index.mjs', external, preferConst: true }
-const browser = { ...main, output: { ...output, dir: 'browser' }, input: 'browser/index.mjs' }
+const outputOptions = {
+  format: 'cjs',
+  externalLiveBindings: false,
+  interop: false,
+  preferConst: true
+}
+
+const main = {
+  external,
+  input: './index.mjs',
+  output: {
+    file: './index.js',
+    ...outputOptions
+  }
+}
+
+const browser = {
+  external,
+  input: './browser/index.mjs',
+  output: {
+    file: './browser/index.js',
+    ...outputOptions
+  }
+}
 
 export default [main, browser]
