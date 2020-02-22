@@ -1,6 +1,6 @@
 {
   "name": "tapeless",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Helps with tape like testing",
   "keywords": [
     "tap",
