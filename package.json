@@ -16,11 +16,14 @@
     "type": "git",
     "url": "git+https://github.com/thewhodidthis/tapeless.git"
   },
-  "license": "Unlicense",
-  "author": "sChzs BkgNns <sotirios.bakagiannis@gmail.com> (https://www.thewhodidthis.com)",
+  "license": "ISC",
+  "author": "Sotiri Bakagiannis <sotirios.bakagiannis@gmail.com> (http://thewhodidthis.com)",
   "main": "index",
   "module": "index.mjs",
   "browser": "browser/index",
+  "directories": {
+    "example": "example"
+  },
   "scripts": {
     "preexample": "eslint example",
     "example": "node example",
