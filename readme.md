@@ -66,7 +66,7 @@ npx -p kpow -p rollup -p @rollup/plugin-node-resolve -c \
 'rollup -p node-resolve -f iife test.js | kpow'
 ```
 
-Will result in the following HTML preview:
+Results in the following HTML preview:
 
 ![TAP in HTML sample](https://i.imgur.com/A2bwjDX.png)
 
