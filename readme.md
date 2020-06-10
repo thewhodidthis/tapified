@@ -1,6 +1,6 @@
 ## about
 
-Combines the Node.js built-in [assert](https://nodejs.org/api/assert.html) module with [likewise](https://npm.im/likewise) on the browser side using [tapeling](https://npm.im/tapeling) to produce [TAP](https://testanything.org) reports; [substack/tape](https://github.com/substack/tape) inspired, but smaller.
+A [tape](https://github.com/substack/tape) inspired test harness to combine the Node.js built-in [assert](https://nodejs.org/api/assert.html) module with [likewise](https://npm.im/likewise) on the browser side using the [tapeling](https://npm.im/tapeling) [TAP](https://testanything.org) reporter.
 
 ## setup
 
@@ -66,7 +66,7 @@ npx -p kpow -p rollup -p @rollup/plugin-node-resolve -c \
 'rollup -p node-resolve -f iife test.js | kpow'
 ```
 
-Results in the following HTML preview:
+Results in the following HTML report:
 
 ![TAP in HTML sample](https://i.imgur.com/A2bwjDX.png)
 
