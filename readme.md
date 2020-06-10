@@ -40,21 +40,12 @@ ok 4 - deepStrictEqual
 # pass  4
 ```
 
-Assertions provided browser side include just the basics `ok()` and `equal()` plus counterparts. Add [cutaway](https://npm.im/cutaway) to generate HTML formatted TAP output. Given the following document for example,
-
-```html
-<!-- test.html -->
-<body>
-  <script src="test.js"></script>
-</body>
-```
-
-With a test script of:
+Assertions provided browser side include just the basics `ok()` and `equal()` plus counterparts. Add [kpow](https://npm.im/kpow) and [cutaway](https://npm.im/cutaway) to generate HTML formatted TAP output. Given the test script below, for example,
 
 ```js
 // Sample test.js
 import 'cutaway'
-import { report, assert } from 'tapeless'
+import { report, assert } from 'tapeless/browser'
 
 const { equal: same, ok } = assert
 
@@ -68,9 +59,16 @@ same.test(sample, id())
 report()
 ```
 
-Run `npx parcel test.html` to get something like:
+Bundling along the lines of:
 
-![TAP in HTML sample](https://i.imgur.com/OGTDwYc.png)
+```sh
+npx -p kpow -p rollup -p @rollup/plugin-node-resolve -c \
+'rollup -p node-resolve -f iife test.js | kpow'
+```
+
+Will result in the following HTML preview:
+
+![TAP in HTML sample](https://i.imgur.com/A2bwjDX.png)
 
 ## see also
 
