@@ -40,7 +40,7 @@ ok 4 - deepStrictEqual
 # pass  4
 ```
 
-Assertions provided browser side include just the basics `ok()` and `equal()` plus counterparts. Add [kpow](https://npm.im/kpow) and [cutaway](https://npm.im/cutaway) to generate HTML formatted TAP output. Given the test script below, for example,
+Assertions provided on the browser side include just the basics `ok()` and `equal()` plus counterparts. Add [kpow](https://npm.im/kpow) and [cutaway](https://npm.im/cutaway) to generate HTML formatted TAP output. For example, given a test script like:
 
 ```js
 // Sample test.js
