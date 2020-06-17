@@ -36,13 +36,13 @@
     "extends": "@thewhodidthis"
   },
   "dependencies": {
-    "likewise": "^1.0.3",
-    "tapeling": "^1.0.6"
+    "likewise": "^1.0.5",
+    "tapeling": "^1.0.10"
   },
   "devDependencies": {
-    "@thewhodidthis/eslint-config": "^0.0.15",
-    "eslint": "^6.8.0",
-    "rollup": "^1.31.1"
+    "@thewhodidthis/eslint-config": "^0.1.6",
+    "eslint": "^7.2.0",
+    "rollup": "^2.16.1"
   },
   "engines": {
     "node": ">=6.11.0",
