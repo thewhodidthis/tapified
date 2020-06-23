@@ -1,4 +1,4 @@
-const assert = require('../')
+const assert = require('../index.cjs')
 
 assert
   .describe('assert exists')

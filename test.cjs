@@ -4,7 +4,7 @@
 const { execFile } = require('child_process')
 const { execPath } = process
 
-const assert = require('./')
+const assert = require('./index.cjs')
 
 assert
   .describe('assert exists')
