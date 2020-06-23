@@ -19,12 +19,12 @@
   "license": "ISC",
   "author": "Sotiri Bakagiannis <sotirios.bakagiannis@gmail.com> (http://thewhodidthis.com)",
   "type": "module",
-  "main": "./index.cjs",
   "exports": {
     "import": "./index.js",
     "require": "./index.cjs"
   },
-  "browser": "browser/index.js",
+  "main": "index",
+  "browser": "browser/index",
   "directories": {
     "example": "example"
   },
@@ -40,8 +40,8 @@
     "extends": "@thewhodidthis"
   },
   "dependencies": {
-    "likewise": "^2.0.2",
-    "tapeling": "^2.0.3"
+    "likewise": "^2.0.3",
+    "tapeling": "^2.0.4"
   },
   "devDependencies": {
     "@thewhodidthis/eslint-config": "^0.1.7",
