@@ -10,18 +10,18 @@ const outputOptions = {
 
 const main = {
   external,
-  input: './index.mjs',
+  input: './index.js',
   output: {
-    file: './index.js',
+    file: './index.cjs',
     ...outputOptions
   }
 }
 
 const browser = {
   external,
-  input: './browser/index.mjs',
+  input: './browser/index.js',
   output: {
-    file: './browser/index.js',
+    file: './browser/index.cjs',
     ...outputOptions
   }
 }

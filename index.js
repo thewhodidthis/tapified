@@ -1,14 +1,12 @@
-'use strict';
+import { tape, exit } from 'tapeling'
+import assert from 'assert'
 
-const tapeling = require('tapeling');
-const assert = require('assert');
-
-const tap = tapeling.tape(assert);
+const tap = tape(assert)
 
 for (const fn in assert) {
-  tap[fn] = tapeling.tape(assert[fn]);
+  tap[fn] = tape(assert[fn])
 }
 
-process.on('exit', tapeling.exit);
+process.on('exit', exit)
 
-module.exports = tap;
+export default tap

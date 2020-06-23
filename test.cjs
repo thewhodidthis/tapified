@@ -28,7 +28,7 @@ assert.doesNotThrow
       }, /expected/)
   }, Error)
 
-const ego = require.resolve('./')
+const ego = require.resolve('./index.cjs')
 
 execFile(execPath, [ego], (error, stdout, stderr) => {
   assert
@@ -45,7 +45,7 @@ execFile(execPath, [ego], (error, stdout, stderr) => {
     .test(error, null)
 })
 
-const bad = require.resolve('./example/bail.js')
+const bad = require.resolve('./example/bail.cjs')
 
 execFile(execPath, [bad], (error, stdout, stderr) => {
   assert.notEqual
@@ -65,7 +65,7 @@ execFile(execPath, [bad], (error, stdout, stderr) => {
     .test(stdout.includes('# tests 0'), false)
 })
 
-const tip = require.resolve('./example')
+const tip = require.resolve('./example/index.cjs')
 
 execFile(execPath, [tip], (error, stdout, stderr) => {
   assert.equal

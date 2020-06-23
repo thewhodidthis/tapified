@@ -1,15 +1,10 @@
-'use strict';
+import { tape, exit } from 'tapeling'
+import { assert } from 'likewise'
 
-Object.defineProperty(exports, '__esModule', { value: true });
+const tap = tape(assert)
 
-const tapeling = require('tapeling');
-const likewise = require('likewise');
-
-const tap = tapeling.tape(likewise.assert);
-
-for (const fn in likewise.assert) {
-  tap[fn] = tapeling.tape(likewise.assert[fn]);
+for (const fn in assert) {
+  tap[fn] = tape(assert[fn])
 }
 
-exports.report = tapeling.exit;
-exports.assert = tap;
+export { exit as report, tap as assert }

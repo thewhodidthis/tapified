@@ -18,34 +18,38 @@
   },
   "license": "ISC",
   "author": "Sotiri Bakagiannis <sotirios.bakagiannis@gmail.com> (http://thewhodidthis.com)",
-  "main": "index",
-  "module": "index.mjs",
-  "browser": "browser/index",
+  "type": "module",
+  "main": "./index.cjs",
+  "exports": {
+    "import": "./index.js",
+    "require": "./index.cjs"
+  },
+  "browser": "browser/index.js",
   "directories": {
     "example": "example"
   },
   "scripts": {
-    "preexample": "eslint example",
-    "example": "node example",
-    "prestart": "eslint . --ext mjs",
+    "preexample": "eslint example --ext cjs",
+    "example": "node example/index.cjs",
+    "prestart": "eslint .",
     "start": "rollup -c",
-    "pretest": "eslint test.js",
-    "test": "node test"
+    "pretest": "eslint test.cjs",
+    "test": "node test.cjs"
   },
   "eslintConfig": {
     "extends": "@thewhodidthis"
   },
   "dependencies": {
-    "likewise": "^1.0.5",
-    "tapeling": "^1.0.10"
+    "likewise": "^2.0.2",
+    "tapeling": "^2.0.3"
   },
   "devDependencies": {
-    "@thewhodidthis/eslint-config": "^0.1.6",
-    "eslint": "^7.2.0",
-    "rollup": "^2.16.1"
+    "@thewhodidthis/eslint-config": "^0.1.7",
+    "eslint": "^7.3.1",
+    "rollup": "^2.18.0"
   },
   "engines": {
-    "node": ">=6.11.0",
-    "npm": ">=3.10.10"
+    "node": ">=12.18.1",
+    "npm": ">=6.14.5"
   }
 }
