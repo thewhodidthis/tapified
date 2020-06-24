@@ -20,8 +20,14 @@
   "author": "Sotiri Bakagiannis <sotirios.bakagiannis@gmail.com> (http://thewhodidthis.com)",
   "type": "module",
   "exports": {
-    "import": "./index.js",
-    "require": "./index.cjs"
+    ".": {
+      "import": "./index.js",
+      "require": "./index.cjs"
+    },
+    "./browser": {
+      "import": "./browser/index.js",
+      "require": "./browser/index.cjs"
+    }
   },
   "main": "index",
   "browser": "browser/index",
