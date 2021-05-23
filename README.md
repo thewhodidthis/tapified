@@ -16,7 +16,7 @@ npm install tapeless --save-dev
 In Node.js all of `assert` is wrapped a-la [tapjs/tapsert](https://github.com/tapjs/tapsert) making a range of involved checks available. For example,
 
 ```js
-const { deepStrictEqual, equal, doesNotThrow, ok } = require('tapeless')
+import { deepStrictEqual, equal, doesNotThrow, ok } from 'tapeless'
 const sample = { a: 'a', b: 'b' }
 const id = (input = sample) => input
 

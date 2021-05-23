@@ -1,10 +1,10 @@
-'use strict'
-
 // Adapted from tapjs/tapsert
-const { execFile } = require('child_process')
-const { execPath } = process
+import { execFile } from 'child_process'
+import { createRequire } from 'module'
+import assert from './main.js'
 
-const assert = require('./index.cjs')
+const require = createRequire(import.meta.url)
+const { execPath } = process
 
 assert
   .describe('assert exists')
@@ -28,7 +28,7 @@ assert.doesNotThrow
       }, /expected/)
   }, Error)
 
-const ego = require.resolve('./index.cjs')
+const ego = require.resolve('./main.js')
 
 execFile(execPath, [ego], (error, stdout, stderr) => {
   assert
@@ -45,7 +45,7 @@ execFile(execPath, [ego], (error, stdout, stderr) => {
     .test(error, null)
 })
 
-const bad = require.resolve('./example/bail.cjs')
+const bad = require.resolve('./bail.js')
 
 execFile(execPath, [bad], (error, stdout, stderr) => {
   assert.notEqual
@@ -65,7 +65,7 @@ execFile(execPath, [bad], (error, stdout, stderr) => {
     .test(stdout.includes('# tests 0'), false)
 })
 
-const tip = require.resolve('./example/index.cjs')
+const tip = require.resolve('./example.js')
 
 execFile(execPath, [tip], (error, stdout, stderr) => {
   assert.equal

@@ -1,4 +1,4 @@
-const assert = require('../index.cjs')
+import assert from './main.js'
 
 assert
   .describe('assert exists')

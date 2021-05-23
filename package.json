@@ -20,27 +20,18 @@
   "author": "Sotiri Bakagiannis <sotirios.bakagiannis@gmail.com> (http://thewhodidthis.com)",
   "type": "module",
   "exports": {
-    ".": {
-      "import": "./index.js",
-      "require": "./index.cjs"
-    },
-    "./browser": {
-      "import": "./browser/index.js",
-      "require": "./browser/index.cjs"
-    }
+    ".": "./main.js",
+    "./browser": "./browser.js"
   },
-  "main": "index",
-  "browser": "browser/index",
-  "directories": {
-    "example": "example"
-  },
+  "main": "./main.js",
+  "browser": "./browser.js",
   "scripts": {
-    "preexample": "eslint example --ext cjs",
-    "example": "node example/index.cjs",
-    "prestart": "eslint .",
-    "start": "rollup -c",
-    "pretest": "eslint test.cjs",
-    "test": "node test.cjs"
+    "preexample": "eslint example.js",
+    "example": "node example.js",
+    "prestart": "eslint main.js",
+    "start": "npm run example",
+    "pretest": "eslint test.js",
+    "test": "node test.js"
   },
   "eslintConfig": {
     "extends": "@thewhodidthis"
@@ -50,12 +41,11 @@
     "tapeling": "^2.0.4"
   },
   "devDependencies": {
-    "@thewhodidthis/eslint-config": "^0.1.7",
-    "eslint": "^7.3.1",
-    "rollup": "^2.18.0"
+    "@thewhodidthis/eslint-config": "^1.0.2",
+    "eslint": "^7.27.0"
   },
   "engines": {
-    "node": ">=12.18.1",
-    "npm": ">=6.14.5"
+    "node": ">=14.7.0",
+    "npm": ">=6.14.13"
   }
 }
