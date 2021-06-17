@@ -7,7 +7,9 @@ process.on("exit", exit)
 const tap = tape(assert)
 
 for (const fn in assert) {
-  tap[fn] = tape(assert[fn])
+  if (fn !== "CallTracker" || fn !== "AssertionError") {
+    tap[fn] = tape(assert[fn])
+  }
 }
 
 export default tap
