@@ -1,4 +1,4 @@
-import assert from "./main.js"
+import assert from "tapeless"
 
 assert
   .describe("assert exists")
