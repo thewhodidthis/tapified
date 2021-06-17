@@ -27,9 +27,9 @@ assert.doesNotThrow
   }, Error)
 
 const require = createRequire(import.meta.url)
-const ego = require.resolve("./main.js")
+const main = require.resolve("./main.js")
 
-execFile(execPath, [ego], (error, stdout, stderr) => {
+execFile(execPath, [main], (error, stdout, stderr) => {
   assert
     .describe("TAP version header comes on top")
     .test(stdout.startsWith("TAP version 13"))
@@ -44,9 +44,9 @@ execFile(execPath, [ego], (error, stdout, stderr) => {
     .test(error, null)
 })
 
-const bad = require.resolve("./bail.js")
+const bail = require.resolve("./bail.js")
 
-execFile(execPath, [bad], (error, stdout, stderr) => {
+execFile(execPath, [bail], (error, stdout, stderr) => {
   assert.notEqual
     .describe("does not clear stderr")
     .test(stderr, "")
@@ -64,9 +64,9 @@ execFile(execPath, [bad], (error, stdout, stderr) => {
     .test(stdout.includes("# tests 0"), false)
 })
 
-const tip = require.resolve("./example.js")
+const example = require.resolve("./example.js")
 
-execFile(execPath, [tip], (error, stdout, stderr) => {
+execFile(execPath, [example], (error, stdout, stderr) => {
   assert.equal
     .describe("does not write to stderr")
     .test(stderr, "")
