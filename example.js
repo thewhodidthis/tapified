@@ -1,25 +1,26 @@
-import assert from './main.js'
+import assert from "./main.js"
 
 assert
-  .describe('assert exists')
+  .describe("assert exists")
   .test(assert)
-  .describe('assert.equal exists')
+  .describe("assert.equal exists")
   .test(assert.equal)
 
 assert.equal
-  .describe('assert.strictEqual is a function')
-  .test(typeof assert.strictEqual.test, 'function')
+  .describe("assert.strictEqual is a function")
+  .test(typeof assert.strictEqual.test, "function")
 
 assert.ok
-  .describe('really want false to be true')
+  .describe("really want false to be true")
   .test(false)
 
-const nested = () => assert.throws
-  .describe('support assert.throws')
-  .test(() => {
-    throw Error('expected!')
-  }, /expected/)
+const nested = () =>
+  assert.throws
+    .describe("support assert.throws")
+    .test(() => {
+      throw Error("expected!")
+    }, /expected/)
 
 assert.doesNotThrow
-  .describe('nested asserts come last, so this gets ignored')
+  .describe("nested asserts come last, so this gets ignored")
   .test(nested, Error)
