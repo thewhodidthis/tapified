@@ -4,10 +4,10 @@ A [tape](https://github.com/substack/tape) inspired test harness to combine the 
 
 ## setup
 
-Download the [latest stable version](https://npm.im/tapeless) from the _npm_ registry:
+Download from the _npm_ registry:
 
 ```sh
-# Add to 'package.json' development dependencies
+# Add to package.json
 npm install tapeless --save-dev
 ```
 
@@ -16,11 +16,11 @@ npm install tapeless --save-dev
 In Node.js all of `assert` is wrapped a-la [tapjs/tapsert](https://github.com/tapjs/tapsert) making a range of involved checks available. For example,
 
 ```js
-import { deepStrictEqual, equal, doesNotThrow, ok } from 'tapeless'
-const sample = { a: 'a', b: 'b' }
+import { deepStrictEqual, doesNotThrow, equal, ok } from "tapeless"
+const sample = { a: "a", b: "b" }
 const id = (input = sample) => input
 
-equal.test(typeof id, 'function')
+equal.test(typeof id, "function")
 doesNotThrow.test(id)
 ok.test(sample)
 deepStrictEqual.test(sample, id())
@@ -40,19 +40,19 @@ ok 4 - deepStrictEqual
 # pass  4
 ```
 
-Assertions provided on the browser side include just the basics `ok()` and `equal()` plus counterparts. Add [kpow](https://npm.im/kpow) and [cutaway](https://npm.im/cutaway) to generate HTML formatted TAP output. For example, given a test script like:
+Browser-side assertions include just the basics of `ok()` and `equal()` plus counterparts. Add [kpow](https://npm.im/kpow) and [cutaway](https://npm.im/cutaway) to generate HTML formatted TAP output. For example, given a test script like:
 
 ```js
 // Sample test.js
-import 'cutaway'
-import { report, assert } from 'tapeless/browser'
+import { assert, report } from "tapeless/browser"
+import "cutaway"
 
 const { equal: same, ok } = assert
 
-const sample = { a: 'a', b: 'b' }
+const sample = { a: "a", b: "b" }
 const id = (input = sample) => input
 
-same.test(typeof id, 'function')
+same.test(typeof id, "function")
 ok.test(sample)
 same.test(sample, id())
 
