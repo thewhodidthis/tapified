@@ -26,23 +26,12 @@
   "main": "./main.js",
   "browser": "./browser.js",
   "scripts": {
-    "preexample": "eslint example.js",
-    "example": "node example.js",
-    "prestart": "eslint main.js",
-    "start": "npm run example",
-    "pretest": "eslint test.js",
+    "start": "node example.js",
     "test": "node test.js"
-  },
-  "eslintConfig": {
-    "extends": "@thewhodidthis"
   },
   "dependencies": {
     "likewise": "^2.0.3",
     "tapeling": "^2.0.4"
-  },
-  "devDependencies": {
-    "@thewhodidthis/eslint-config": "^1.0.2",
-    "eslint": "^7.27.0"
   },
   "engines": {
     "node": ">=14.17.0",
