@@ -1,5 +1,5 @@
-import { assert } from "likewise"
 import { exit, tape } from "tapeling"
+import { assert } from "likewise"
 
 const tap = tape(assert)
 
