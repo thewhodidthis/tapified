@@ -1,10 +1,8 @@
 // Adapted from tapjs/tapsert
 import { execFile } from "child_process"
 import { createRequire } from "module"
-import assert from "./main.js"
-
-const require = createRequire(import.meta.url)
-const { execPath } = process
+import { execPath } from "process"
+import assert from "tapeless"
 
 assert
   .describe("assert exists")
@@ -28,6 +26,7 @@ assert.doesNotThrow
       }, /expected/)
   }, Error)
 
+const require = createRequire(import.meta.url)
 const ego = require.resolve("./main.js")
 
 execFile(execPath, [ego], (error, stdout, stderr) => {
