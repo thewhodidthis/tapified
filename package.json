@@ -26,8 +26,8 @@
     "test": "node test.js"
   },
   "dependencies": {
-    "likewise": "^2.0.3",
-    "tapeling": "^2.0.4"
+    "likewise": "^3.0.2",
+    "tapeling": "^3.0.2"
   },
   "engines": {
     "node": ">=14.17.0",
