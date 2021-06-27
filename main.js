@@ -1,10 +1,10 @@
-import { assert } from "likewise"
-import { exit, tape } from "tapeling"
+import { assert as axxert } from "likewise"
+import { exit as report, tape } from "tapeling"
 
-const tap = tape(assert)
+const assert = tape(axxert)
 
-for (const fn in assert) {
-  tap[fn] = tape(assert[fn])
+for (const x in axxert) {
+  assert[x] = tape(axxert[x])
 }
 
-export { exit as report, tap as assert }
+export { report, assert }
