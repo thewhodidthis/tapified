@@ -1,51 +1,35 @@
 ## about
 
-A [tape](https://github.com/substack/tape) inspired test harness to combine the Node.js built-in [assert](https://nodejs.org/api/assert.html) module with [likewise](https://npm.im/likewise) on the browser side using the [tapeling](https://npm.im/tapeling) [TAP](https://testanything.org) reporter.
+A test harness that is smaller than [tape](https://github.com/substack/tape) and can be used in-browser directly.
 
 ## setup
 
-Download from the _npm_ registry:
+Download from the _npm_ registry for Node.js:
 
 ```sh
 # Add to package.json
 npm install tapeless --save-dev
 ```
 
+Source from an [import map](https://github.com/WICG/import-maps) for Deno:
+
+```json
+{
+  "imports": {
+    "likewise": "https://cdn.jsdelivr.net/npm/likewise@latest/main.js",
+    "tapeling": "https://cdn.jsdelivr.net/npm/tapeling@latest/main.js"
+  }
+}
+```
+
 ## usage
 
-In Node.js all of `assert` is wrapped a-la [tapjs/tapsert](https://github.com/tapjs/tapsert) making a range of involved checks available. For example,
-
-```js
-import { deepStrictEqual, doesNotThrow, equal, ok } from "tapeless"
-const sample = { a: "a", b: "b" }
-const id = (input = sample) => input
-
-equal.test(typeof id, "function")
-doesNotThrow.test(id)
-ok.test(sample)
-deepStrictEqual.test(sample, id())
-```
-
-Giving TAP results of:
-
-```console
-TAP version 13
-ok 1 - equal
-ok 2 - doesNotThrow
-ok 3 - ok
-ok 4 - deepStrictEqual
-
-1..4
-# tests 4
-# pass  4
-```
-
-Browser-side assertions include just the basics of `ok()` and `equal()` plus counterparts. Add [kpow](https://npm.im/kpow) and [cutaway](https://npm.im/cutaway) to generate HTML formatted TAP output. For example, given a test script like:
+The assertions provided are `ok()` and `equal()` plus counterparts. Add [kpow](https://npm.im/kpow) and [cutaway](https://npm.im/cutaway) to run browser-side. For example, given a test script like:
 
 ```js
 // Sample test.js
-import { assert, report } from "tapeless/browser"
 import "cutaway"
+import { assert, report } from "tapeless"
 
 const { equal: same, ok } = assert
 
@@ -66,7 +50,7 @@ npx -p kpow -p rollup -p @rollup/plugin-node-resolve -c \
 'rollup -p node-resolve -f iife test.js | kpow'
 ```
 
-Results in the following HTML report:
+Produces the following report:
 
 ![TAP in HTML sample](https://i.imgur.com/A2bwjDX.png)
 
