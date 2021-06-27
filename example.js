@@ -1,4 +1,4 @@
-import assert from "tapeless"
+import { assert, report } from "./main.js"
 
 assert
   .describe("assert exists")
@@ -7,20 +7,11 @@ assert
   .test(assert.equal)
 
 assert.equal
-  .describe("assert.strictEqual is a function")
-  .test(typeof assert.strictEqual.test, "function")
+  .describe("assert.notOk is a function")
+  .test(typeof assert.notOk.test, "function")
 
 assert.ok
   .describe("really want false to be true")
   .test(false)
 
-const nested = () =>
-  assert.throws
-    .describe("support assert.throws")
-    .test(() => {
-      throw Error("expected!")
-    }, /expected/)
-
-assert.doesNotThrow
-  .describe("nested asserts come last, so this gets ignored")
-  .test(nested, Error)
+report()

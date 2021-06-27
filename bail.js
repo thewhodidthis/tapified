@@ -1,4 +1,6 @@
-/* eslint no-unused-vars: 1, no-undef: 1 */
-import _ from "tapeless"
+import process from "process"
+import { report } from "./main.js"
+
+process.on("exit", report)
 
 who()

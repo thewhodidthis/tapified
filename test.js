@@ -2,7 +2,9 @@
 import { execFile } from "child_process"
 import { createRequire } from "module"
 import { execPath } from "process"
-import assert from "tapeless"
+import { assert, report } from "./main.js"
+
+process.on("exit", report)
 
 assert
   .describe("assert exists")
@@ -13,28 +15,13 @@ assert
 
 assert.equal
   .test("skip description", "skip description")
-  .describe("assert.strictEqual is a function")
-  .test(typeof assert.strictEqual.test, "function")
-
-assert.doesNotThrow
-  .describe("are nested asserts really that weird?")
-  .test(() => {
-    assert.throws
-      .describe("support assert.throws")
-      .test(() => {
-        throw Error("expected!")
-      }, /expected/)
-  }, Error)
+  .describe("assert.ok is a function")
+  .test(typeof assert.ok.test, "function")
 
 const require = createRequire(import.meta.url)
 const main = require.resolve("./main.js")
 
 execFile(execPath, [main], (error, stdout, stderr) => {
-  assert
-    .describe("TAP version header comes on top")
-    .test(stdout.startsWith("TAP version 13"))
-    .test(stdout.includes("# tests 0"))
-
   assert.equal
     .describe("does not write to stderr")
     .test(stderr, "")
@@ -73,11 +60,11 @@ execFile(execPath, [example], (error, stdout, stderr) => {
 
   assert
     .describe("has TAP plan")
-    .test(stdout.includes("1..6"))
-    .describe("has 6 tests total")
-    .test(stdout.includes("# tests 6"))
-    .describe("has 5 passing tests")
-    .test(stdout.includes("# pass  5"))
+    .test(stdout.includes("1..4"))
+    .describe("has 4 tests total")
+    .test(stdout.includes("# tests 4"))
+    .describe("has 3 passing tests")
+    .test(stdout.includes("# pass  3"))
     .describe("has 1 failing test")
     .test(stdout.includes("# fail  1"))
 
